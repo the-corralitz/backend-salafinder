@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "psKDHFytEpA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\corralitz\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.7\\microsoft.aspnetcore.openapi.10.0.7.nupkg.sha512",
+    "C:\\Users\\corralitz\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

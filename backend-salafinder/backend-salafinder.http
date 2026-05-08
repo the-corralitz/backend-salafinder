@@ -1,0 +1,6 @@
+@backend_salafinder_HostAddress = http://localhost:5201
+
+GET {{backend_salafinder_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
