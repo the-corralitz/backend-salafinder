@@ -1,3 +1,12 @@
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.csproj.AssemblyReference.cache
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.AssemblyInfoInputs.cache
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.AssemblyInfo.cs
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.csproj.CoreCompileInputs.cache
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.sourcelink.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\appsettings.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\backend-salafinder.staticwebassets.endpoints.json
@@ -10,6 +19,7 @@ C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Azure.Identity.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Humanizer.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
@@ -135,15 +145,6 @@ C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.csproj.AssemblyReference.cache
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.AssemblyInfoInputs.cache
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.AssemblyInfo.cs
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.csproj.CoreCompileInputs.cache
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.sourcelink.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -160,4 +161,3 @@ C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.pdb
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.genruntimeconfig.cache
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\ref\backend-salafinder.dll
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

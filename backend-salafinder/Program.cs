@@ -1,4 +1,6 @@
+using backend_salafinder.Interfaces;
 using backend_salafinder.Persistence;
+using backend_salafinder.Services;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -10,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<IEspacioService, EspacioService>();
 
 var app = builder.Build();
 

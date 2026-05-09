@@ -1,6 +1,4 @@
-﻿namespace backend_salafinder.Models
-{
-    public class Reserva
-    {
+﻿namespace backend_salafinder.Models {
+    public class Reserva {
     }
 }

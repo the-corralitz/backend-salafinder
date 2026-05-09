@@ -1,5 +1,78 @@
 [
   {
+    "ContainingType": "backend_salafinder.Controllers.EspacioController",
+    "Method": "Index",
+    "RelativePath": "Espacio",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.EspacioController",
+    "Method": "GetAll",
+    "RelativePath": "Espacio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.EspacioController",
+    "Method": "Create",
+    "RelativePath": "Espacio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "espacio",
+        "Type": "backend_salafinder.Models.DTO.EspacioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.EspacioController",
+    "Method": "Edit",
+    "RelativePath": "Espacio",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "espacio",
+        "Type": "backend_salafinder.Models.Espacio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.EspacioController",
+    "Method": "GetById",
+    "RelativePath": "Espacio/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend_salafinder.Controllers.TestController",
     "Method": "Get",
     "RelativePath": "Test",

@@ -13,6 +13,111 @@
     }
   ],
   "paths": {
+    "/Espacio": {
+      "get": {
+        "tags": [
+          "Espacio"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Espacio"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EspacioDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EspacioDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EspacioDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Espacio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Espacio"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Espacio"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Espacio"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Espacio/{id}": {
+      "get": {
+        "tags": [
+          "Espacio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Test": {
       "get": {
         "tags": [
@@ -26,7 +131,102 @@
       }
     }
   },
+  "components": {
+    "schemas": {
+      "Espacio": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "capacidad": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "edificio": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "recursos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "programas_prioritarios": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiere_aprobacion": {
+            "type": "boolean"
+          },
+          "creado_en": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EspacioDTO": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "capacidad": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "edificio": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "recursos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "programas_prioritarios": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiere_aprobacion": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
   "tags": [
+    {
+      "name": "Espacio"
+    },
     {
       "name": "Test"
     }
