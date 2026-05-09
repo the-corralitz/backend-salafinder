@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj": {}
+    "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj": {
+    "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
         "projectName": "backend-salafinder",
-        "projectPath": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
-        "packagesPath": "C:\\Users\\corralitz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\corralitz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

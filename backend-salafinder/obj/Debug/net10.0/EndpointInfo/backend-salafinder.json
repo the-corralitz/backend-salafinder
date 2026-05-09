@@ -72,17 +72,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Espacio"
+                "$ref": "#/components/schemas/EspacioDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Espacio"
+                "$ref": "#/components/schemas/EspacioDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Espacio"
+                "$ref": "#/components/schemas/EspacioDTO"
               }
             }
           },
@@ -133,91 +133,65 @@
   },
   "components": {
     "schemas": {
-      "Espacio": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "nombre": {
-            "type": "string"
-          },
-          "tipo": {
-            "type": "string"
-          },
-          "capacidad": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "edificio": {
-            "type": "string"
-          },
-          "descripcion": {
-            "type": "string"
-          },
-          "recursos": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "programas_prioritarios": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "requiere_aprobacion": {
-            "type": "boolean"
-          },
-          "creado_en": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
       "EspacioDTO": {
         "type": "object",
         "properties": {
           "nombre": {
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "tipo": {
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "capacidad": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
+              "null",
               "integer",
               "string"
             ],
             "format": "int32"
           },
           "edificio": {
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "descripcion": {
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "recursos": {
-            "type": "array",
+            "type": [
+              "null",
+              "array"
+            ],
             "items": {
               "type": "string"
             }
           },
           "programas_prioritarios": {
-            "type": "array",
+            "type": [
+              "null",
+              "array"
+            ],
             "items": {
               "type": "string"
             }
           },
           "requiere_aprobacion": {
-            "type": "boolean"
+            "type": [
+              "null",
+              "boolean"
+            ]
           }
         }
       }
