@@ -154,7 +154,6 @@ C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-.1B37DD64.Up2Date
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.dll
 C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\refint\backend-salafinder.dll
@@ -324,3 +323,4 @@ C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salaf
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.genruntimeconfig.cache
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\ref\backend-salafinder.dll
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
