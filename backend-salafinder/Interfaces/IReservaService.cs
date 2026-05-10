@@ -10,7 +10,8 @@ namespace backend_salafinder.Interfaces {
             TimeOnly hora_fin,
             string proposito,
             int asistentes,
-            Guid id_espacio
+            Guid id_espacio,
+            Guid id_usuario
         );
 
         Task<bool> ChangeStatus(Guid id, string estado);

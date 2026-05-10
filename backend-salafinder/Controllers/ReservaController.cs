@@ -34,7 +34,8 @@ namespace backend_salafinder.Controllers {
                 reserva.hora_fin,
                 reserva.proposito,
                 reserva.asistentes,
-                reserva.id_espacio
+                reserva.id_espacio,
+                reserva.id_usuario
             );
 
             return created != null ? CreatedAtAction(nameof(GetById),

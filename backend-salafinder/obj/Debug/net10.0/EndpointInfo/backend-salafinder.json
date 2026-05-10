@@ -409,6 +409,10 @@
           "id_espacio": {
             "type": "string",
             "format": "uuid"
+          },
+          "id_usuario": {
+            "type": "string",
+            "format": "uuid"
           }
         }
       }

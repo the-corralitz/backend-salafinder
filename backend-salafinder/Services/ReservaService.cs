@@ -14,12 +14,14 @@ namespace backend_salafinder.Services {
         public async Task<List<Reserva>> GetAll() {
             return await _context.Reserva
                 .Include(r => r.espacio)
+                .Include(r => r.usuario)
                 .ToListAsync();
         }
 
         public async Task<Reserva> GetById(Guid id) {
             return await _context.Reserva
                 .Include(r => r.espacio)
+                .Include(r => r.usuario)
                 .FirstOrDefaultAsync(r => r.id == id);
         }
 
@@ -29,10 +31,14 @@ namespace backend_salafinder.Services {
             TimeOnly hora_fin,
             string proposito,
             int asistentes,
-            Guid id_espacio
+            Guid id_espacio,
+            Guid id_usuario
         ) {
             var espacio = await _context.Espacio.FindAsync(id_espacio);
             if (espacio == null) return null;
+
+            var usuario = await _context.UsuarioPerfil.FindAsync(id_usuario);
+            if (usuario == null) return null;
 
             var reserva = new Reserva {
                 fecha = fecha,
@@ -41,10 +47,9 @@ namespace backend_salafinder.Services {
                 proposito = proposito,
                 asistentes = asistentes,
                 id_espacio = id_espacio,
-                espacio = espacio
+                espacio = espacio,
+                usuario = usuario
             };
-
-            reserva.espacio = espacio;
         
             _context.Reserva.Add(reserva);
             await _context.SaveChangesAsync();
