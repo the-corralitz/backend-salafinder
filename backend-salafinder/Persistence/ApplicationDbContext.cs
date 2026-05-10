@@ -8,5 +8,6 @@ namespace backend_salafinder.Persistence {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
         public DbSet<Espacio> Espacio { get; set; }
         public DbSet<Reserva> Reserva { get; set; }
+        public DbSet<UsuarioPerfil> UsuarioPerfil { get; set; }
     }
 }

@@ -618,6 +618,22 @@
           "build/net10.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.InMemory/10.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "10.0.7"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/10.0.7": {
         "type": "package",
         "dependencies": {
@@ -2515,6 +2531,21 @@
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.InMemory/10.0.7": {
+      "sha512": "RAns8RTPymM9GsIdY5Y8wWdpdMEXputTl24+95WhYzqF4HhT0i+jFmNgDxBTy386vU9ruoUC5gcPAiuJr8SZxg==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.inmemory/10.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "lib/net10.0/Microsoft.EntityFrameworkCore.InMemory.dll",
+        "lib/net10.0/Microsoft.EntityFrameworkCore.InMemory.xml",
+        "microsoft.entityframeworkcore.inmemory.10.0.7.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Relational/10.0.7": {
       "sha512": "midwPufIwXhOJcVhaZpCZGNbjy2QoPfHI+70nw2dGcoULEW9DybMvMPYkRjOJV0eI46a1oVFhU4lFYDEx6YUbg==",
       "type": "package",
@@ -3259,29 +3290,30 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 10.0.7",
       "Microsoft.AspNetCore.OpenApi >= 10.0.7",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.7",
+      "Microsoft.EntityFrameworkCore.InMemory >= 10.0.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 10.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 10.0.7",
       "Scalar.AspNetCore >= 2.14.11"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\corralitz\\.nuget\\packages\\": {},
+    "C:\\Users\\Asus\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
       "projectName": "backend-salafinder",
-      "projectPath": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
-      "packagesPath": "C:\\Users\\corralitz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\corralitz\\EIA\\ing_web\\backend\\backend-salafinder\\backend-salafinder\\obj\\",
+      "projectPath": "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\backend-salafinder.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus\\Desktop\\EIA 2026-1\\IngWeb\\Backend\\backend-salafinder\\backend-salafinder\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\corralitz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3331,6 +3363,10 @@
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[10.0.7, )"
+          },
+          "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
             "version": "[10.0.7, )"
           },
