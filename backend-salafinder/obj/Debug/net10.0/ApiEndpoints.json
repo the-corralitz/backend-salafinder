@@ -180,8 +180,13 @@
         "IsRequired": true
       },
       {
+        "Name": "estado",
+        "Type": "backend_salafinder.Models.DTO.CambiarEstadoDTO",
+        "IsRequired": true
+      },
+      {
         "Name": "status",
-        "Type": "System.String",
+        "Type": "",
         "IsRequired": true
       }
     ],

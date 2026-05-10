@@ -264,7 +264,7 @@ namespace backend_salafinder.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Espacio");
+                    b.ToTable("Espacio", (string)null);
                 });
 
             modelBuilder.Entity("backend_salafinder.Models.Reserva", b =>
@@ -311,7 +311,7 @@ namespace backend_salafinder.Migrations
 
                     b.HasIndex("id_usuario");
 
-                    b.ToTable("Reserva");
+                    b.ToTable("Reserva", (string)null);
                 });
 
             modelBuilder.Entity("backend_salafinder.Models.UsuarioPerfil", b =>
@@ -342,7 +342,7 @@ namespace backend_salafinder.Migrations
 
                     b.HasIndex("identity_user_id");
 
-                    b.ToTable("UsuarioPerfil");
+                    b.ToTable("UsuarioPerfil", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

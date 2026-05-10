@@ -3,6 +3,7 @@
 namespace backend_salafinder.Interfaces {
     public interface IReservaService {
         Task<List<Reserva>> GetAll();
+        Task<List<Reserva>> GetByUsuario(Guid id);
         Task<Reserva> GetById(Guid id);
         Task<Reserva> Create(
             DateOnly fecha,
