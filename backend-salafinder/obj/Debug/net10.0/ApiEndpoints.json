@@ -50,7 +50,7 @@
       },
       {
         "Name": "espacio",
-        "Type": "backend_salafinder.Models.Espacio",
+        "Type": "backend_salafinder.Models.DTO.EspacioDTO",
         "IsRequired": true
       }
     ],

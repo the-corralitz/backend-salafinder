@@ -1,4 +1,5 @@
 ﻿using backend_salafinder.Models;
+using backend_salafinder.Models.DTO;
 using Microsoft.Extensions.Primitives;
 
 namespace backend_salafinder.Interfaces {
@@ -15,6 +16,6 @@ namespace backend_salafinder.Interfaces {
             string[] programas_prioritarios,
             bool requiere_aprobacion
         );
-        Task<Espacio> Edit(Guid id, Espacio espacio);
+        Task<Espacio> Edit(Guid id, EspacioDTO espacio);
     }
 }

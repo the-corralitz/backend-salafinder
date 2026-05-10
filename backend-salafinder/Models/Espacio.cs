@@ -16,5 +16,6 @@ namespace backend_salafinder.Models {
         public string[] programas_prioritarios { get; set; }
         public bool requiere_aprobacion { get; set; } = false;
         public DateTime creado_en { get; set; } = DateTime.UtcNow;
+        public DateTime ultima_vez_modificado { get; set; } = DateTime.UtcNow;
     }
 }

@@ -31,20 +31,20 @@ namespace backend_salafinder.Controllers {
             var created = await _espacio_service.Create(
                 espacio.nombre,
                 espacio.tipo,
-                espacio.capacidad,
+                espacio.capacidad ?? 0,
                 espacio.edificio,
                 espacio.descripcion,
                 espacio.recursos,
                 espacio.programas_prioritarios,
-                espacio.requiere_aprobacion);
+                espacio.requiere_aprobacion ?? false);
             return created != null ? CreatedAtAction(nameof(GetById),
                 new { id = created.id }, espacio) : BadRequest(new { message = "IDs repetidos."});
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit(Guid id, Espacio espacio) {
+        public async Task<IActionResult> Edit(Guid id, [FromBody]EspacioDTO espacio) {
             var edited = await _espacio_service.Edit(id, espacio);
-            return edited != null ? Ok(espacio) : NotFound(null);
+            return edited != null ? Ok(edited) : NotFound(null);
         }
     }
 }
