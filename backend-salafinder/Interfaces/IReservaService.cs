@@ -3,6 +3,7 @@
 namespace backend_salafinder.Interfaces {
     public interface IReservaService {
         Task<List<Reserva>> GetAll();
+        Task<List<Reserva>> GetByUsuario(Guid id);
         Task<Reserva> GetById(Guid id);
         Task<Reserva> Create(
             DateOnly fecha,
@@ -10,7 +11,8 @@ namespace backend_salafinder.Interfaces {
             TimeOnly hora_fin,
             string proposito,
             int asistentes,
-            Guid id_espacio
+            Guid id_espacio,
+            Guid id_usuario
         );
 
         Task<bool> ChangeStatus(Guid id, string estado);

@@ -1,6 +1,8 @@
 ﻿using backend_salafinder.Interfaces;
 using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
+using backend_salafinder.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend_salafinder.Controllers {
@@ -15,36 +17,74 @@ namespace backend_salafinder.Controllers {
             return View();
         }
 
+        private Guid GetUsuarioPerfilId()
+        {
+            var claim = User.FindFirst("usuario_perfil_id")?.Value;
+            return Guid.TryParse(claim, out var id) ? id : Guid.Empty;
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> GetAll() {
-            return Ok(await _reserva_service.GetAll());
+            if (User.IsInRole("Admin"))
+                return Ok(await _reserva_service.GetAll());
+
+            var usuario_id = GetUsuarioPerfilId();
+            if (usuario_id == Guid.Empty)
+                return Unauthorized(new { message = "Token inválido." });
+            return Ok(await _reserva_service.GetByUsuario(usuario_id));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id) {
             var result = await _reserva_service.GetById(id);
-            return result != null ? Ok(result) : NotFound();
+
+            if (result == null)
+                return NotFound();
+
+            if (!User.IsInRole("Admin")) {
+                var usuarioId = GetUsuarioPerfilId();
+                if (result.id_usuario != usuarioId)
+                    return Forbid();
+            }
+
+            return Ok(result);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ReservaDTO_Create reserva) {
-            var created = await _reserva_service.Create(
-                reserva.fecha,
-                reserva.hora_inicio,
-                reserva.hora_fin,
-                reserva.proposito,
-                reserva.asistentes,
-                reserva.id_espacio
-            );
+            var usuarioId = GetUsuarioPerfilId();
+            if (usuarioId == Guid.Empty)
+                return Unauthorized(new { message = "Token inválido." });
 
-            return created != null ? CreatedAtAction(nameof(GetById),
-                new { id = created.id }, reserva) : BadRequest(new { message = "Ocurrio un error." });
+            try {
+                var created = await _reserva_service.Create(
+                    reserva.fecha,
+                    reserva.hora_inicio,
+                    reserva.hora_fin,
+                    reserva.proposito,
+                    reserva.asistentes,
+                    reserva.id_espacio,
+                    reserva.id_usuario
+                );
+
+                return CreatedAtAction(nameof(GetById), new { id = created.id }, reserva);
+            } catch (Exception ex) { 
+                return BadRequest(ex.Message); 
+            }
         }
 
-        [HttpPut("{id}, {status}")]
-        public async Task<IActionResult> ChangeStatus(Guid id, string status) {
-            var status_changed = await _reserva_service.ChangeStatus(id, status);
-            return status_changed == true ? Ok("Estado cambiado") : NotFound();
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ChangeStatus(Guid id, [FromBody] CambiarEstadoDTO estado) {
+            try {
+                var status_changed = await _reserva_service.ChangeStatus(id, estado.estado);
+                if (!status_changed)
+                    return NotFound(new { message = "Reserva no encontrada." });
+                return Ok(new { message = $"Estado cambiado a {estado.estado}" });
+            } catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

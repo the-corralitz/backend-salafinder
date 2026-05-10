@@ -271,6 +271,26 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarEstadoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarEstadoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarEstadoDTO"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -293,6 +313,14 @@
   },
   "components": {
     "schemas": {
+      "CambiarEstadoDTO": {
+        "type": "object",
+        "properties": {
+          "estado": {
+            "type": "string"
+          }
+        }
+      },
       "EspacioDTO": {
         "type": "object",
         "properties": {
@@ -407,6 +435,10 @@
             "format": "int32"
           },
           "id_espacio": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id_usuario": {
             "type": "string",
             "format": "uuid"
           }

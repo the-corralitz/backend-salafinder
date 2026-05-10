@@ -322,6 +322,7 @@ C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salaf
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.pdb
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\backend-salafinder.genruntimeconfig.cache
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\ref\backend-salafinder.dll
-C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\corralitz\EIA\ing_web\backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\Asus\Desktop\EIA 2026-1\IngWeb\Backend\backend-salafinder\backend-salafinder\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

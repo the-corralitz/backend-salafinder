@@ -17,5 +17,8 @@ namespace backend_salafinder.Models {
         public Guid id_espacio { get; set; }
         [ForeignKey("id_espacio")]
         public Espacio espacio { get; set; }
+        public Guid id_usuario { get; set; }
+        [ForeignKey("id_usuario")]
+        public UsuarioPerfil usuario { get; set; }
     }
 }
