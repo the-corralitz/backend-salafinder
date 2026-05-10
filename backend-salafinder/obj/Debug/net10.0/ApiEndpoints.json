@@ -73,6 +73,79 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backend_salafinder.Controllers.ReservaController",
+    "Method": "Index",
+    "RelativePath": "Reserva",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.ReservaController",
+    "Method": "GetAll",
+    "RelativePath": "Reserva",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.ReservaController",
+    "Method": "Create",
+    "RelativePath": "Reserva",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reserva",
+        "Type": "backend_salafinder.Models.DTO.ReservaDTO_Create",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.ReservaController",
+    "Method": "ChangeStatus",
+    "RelativePath": "Reserva",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.ReservaController",
+    "Method": "GetById",
+    "RelativePath": "Reserva/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backend_salafinder.Controllers.TestController",
     "Method": "Get",
     "RelativePath": "Test",

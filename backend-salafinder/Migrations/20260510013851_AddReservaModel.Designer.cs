@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend_salafinder.Persistence;
 
@@ -11,9 +12,11 @@ using backend_salafinder.Persistence;
 namespace backend_salafinder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260510013851_AddReservaModel")]
+    partial class AddReservaModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -283,17 +286,14 @@ namespace backend_salafinder.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("fecha")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
 
                     b.Property<TimeOnly>("hora_fin")
                         .HasColumnType("time");
 
                     b.Property<TimeOnly>("hora_inicio")
                         .HasColumnType("time");
-
-                    b.Property<Guid>("id_espacio")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("proposito")
                         .IsRequired()
@@ -303,8 +303,6 @@ namespace backend_salafinder.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("id");
-
-                    b.HasIndex("id_espacio");
 
                     b.ToTable("Reserva");
                 });
@@ -364,7 +362,7 @@ namespace backend_salafinder.Migrations
                 {
                     b.HasOne("backend_salafinder.Models.Espacio", "espacio")
                         .WithMany()
-                        .HasForeignKey("id_espacio")
+                        .HasForeignKey("id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -36,7 +36,9 @@ namespace backend_salafinder.Controllers {
                 espacio.descripcion,
                 espacio.recursos,
                 espacio.programas_prioritarios,
-                espacio.requiere_aprobacion ?? false);
+                espacio.requiere_aprobacion ?? false
+            );
+
             return created != null ? CreatedAtAction(nameof(GetById),
                 new { id = created.id }, espacio) : BadRequest(new { message = "IDs repetidos."});
         }

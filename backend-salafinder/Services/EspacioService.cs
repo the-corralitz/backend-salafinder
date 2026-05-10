@@ -3,8 +3,6 @@ using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
 using backend_salafinder.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Primitives;
 
 namespace backend_salafinder.Services {
     public class EspacioService : IEspacioService {
@@ -29,8 +27,10 @@ namespace backend_salafinder.Services {
             string descripcion,
             string[] recursos,
             string[] programas_prioritarios,
-            bool requiere_aprobacion) {
-            var espacio = new Espacio { nombre = nombre,
+            bool requiere_aprobacion
+        ) {
+            var espacio = new Espacio {
+                nombre = nombre,
                 tipo = tipo,
                 capacidad = capacidad,
                 edificio = edificio,
@@ -39,6 +39,7 @@ namespace backend_salafinder.Services {
                 programas_prioritarios = programas_prioritarios,
                 requiere_aprobacion = requiere_aprobacion
             };
+
             _context.Espacio.Add(espacio);
             await _context.SaveChangesAsync();
             return espacio;
@@ -50,20 +51,28 @@ namespace backend_salafinder.Services {
 
             if(espacio.nombre != null)
                 existe.nombre = espacio.nombre;
+
             if (espacio.tipo != null)
                 existe.tipo = espacio.tipo;
+
             if (espacio.capacidad != null)
                 existe.capacidad = espacio.capacidad.Value;
+
             if (espacio.edificio != null)
                 existe.edificio = espacio.edificio;
+
             if (espacio.descripcion != null)
                 existe.descripcion = espacio.descripcion;
+
             if (espacio.recursos != null)
                 existe.recursos = espacio.recursos;
+
             if (espacio.programas_prioritarios != null)
                 existe.programas_prioritarios = espacio.programas_prioritarios;
+
             if (espacio.requiere_aprobacion != null)
                 existe.requiere_aprobacion = espacio.requiere_aprobacion.Value;
+
             existe.ultima_vez_modificado = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();
