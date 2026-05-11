@@ -118,6 +118,36 @@
           }
         }
       },
+      "delete": {
+        "tags": [
+          "Espacio"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEspacioDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEspacioDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteEspacioDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "tags": [
           "Espacio"
@@ -245,9 +275,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/Reserva/{id}, {status}": {
+      },
       "put": {
         "tags": [
           "Reserva"
@@ -260,14 +288,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "status",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -286,6 +306,38 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CambiarEstadoDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Reserva/cancel": {
+      "put": {
+        "tags": [
+          "Reserva"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelarDTO"
               }
             }
           },
@@ -318,6 +370,24 @@
         "properties": {
           "estado": {
             "type": "string"
+          }
+        }
+      },
+      "CancelarDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "DeleteEspacioDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
           }
         }
       },

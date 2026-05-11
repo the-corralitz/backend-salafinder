@@ -16,5 +16,6 @@ namespace backend_salafinder.Interfaces {
         );
 
         Task<bool> ChangeStatus(Guid id, string estado);
+        Task<bool> Cancelar(Guid id, Guid id_usuario);
     }
 }

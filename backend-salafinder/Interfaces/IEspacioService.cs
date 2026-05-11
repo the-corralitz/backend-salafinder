@@ -17,5 +17,6 @@ namespace backend_salafinder.Interfaces {
             bool requiere_aprobacion
         );
         Task<Espacio> Edit(Guid id, EspacioDTO espacio);
+        Task<bool> Delete(Guid id);
     }
 }

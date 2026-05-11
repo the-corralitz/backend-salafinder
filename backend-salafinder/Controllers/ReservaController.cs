@@ -1,4 +1,5 @@
-﻿using backend_salafinder.Interfaces;
+﻿using System.Linq.Expressions;
+using backend_salafinder.Interfaces;
 using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
 using backend_salafinder.Services;
@@ -71,6 +72,22 @@ namespace backend_salafinder.Controllers {
                 return CreatedAtAction(nameof(GetById), new { id = created.id }, reserva);
             } catch (Exception ex) { 
                 return BadRequest(ex.Message); 
+            }
+        }
+
+        [HttpPut("cancel")]
+        public async Task<IActionResult> Cancelar([FromBody] CancelarDTO reserva) {
+            var id_usuario = GetUsuarioPerfilId();
+            if (id_usuario == Guid.Empty)
+                return Unauthorized(new { message = "Token inválido" });
+
+            try {
+                var result = await _reserva_service.Cancelar(reserva.id, id_usuario);
+                if (!result)
+                    return NotFound("No se encontró la reserva");
+                return Ok("Se canceló la reserva exitosamente");
+            } catch (Exception e) {
+                return BadRequest(new { message = e.Message });
             }
         }
 

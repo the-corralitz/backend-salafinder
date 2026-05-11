@@ -45,6 +45,23 @@ namespace backend_salafinder.Services {
             return espacio;
         }
 
+        public async Task<bool> Delete(Guid id) {
+            var espacio = await _context.Espacio.FindAsync(id);
+            if (espacio == null) return false;
+
+            var tiene_reservas_activas = await _context.Reserva
+                .AnyAsync(
+                    r => r.id_espacio == id &&
+                    (r.estado == "Pendiente" || r.estado == "Aprobado"));
+
+            if (tiene_reservas_activas)
+                throw new Exception("No se puede eliminar el espacio porque tiene reservas activas");
+
+            _context.Espacio.Remove(espacio);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<Espacio> Edit(Guid id, EspacioDTO espacio) {
             var existe = await _context.Espacio.FindAsync(id);
             if (existe == null) return null;

@@ -47,6 +47,20 @@ namespace backend_salafinder.Controllers {
                 new { id = created.id }, espacio) : BadRequest(new { message = "IDs repetidos."});
         }
 
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(DeleteEspacioDTO espacio) {
+            try {
+                var deleted = await _espacio_service.Delete(espacio.id);
+                if (!deleted)
+                    return NotFound("No se encontró ningún espacio");
+                return Ok("Espacio eliminado exitosamente");
+            }
+            catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPut]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(Guid id, [FromBody]EspacioDTO espacio) {
