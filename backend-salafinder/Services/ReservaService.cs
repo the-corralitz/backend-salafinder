@@ -129,5 +129,22 @@ namespace backend_salafinder.Services {
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> Cancelar(Guid id, Guid id_usuario) {
+            var reserva = await _context.Reserva.FindAsync(id);
+            if (reserva == null) return false;
+
+            if (reserva.id_usuario != id_usuario)
+                throw new Exception("No está autorizado para cancelar esta reserva.");
+
+            if (reserva.estado == "Cancelado")
+                throw new Exception("La reserva ya fue cancelada.");
+
+            reserva.estado = "Cancelado";
+            reserva.ultima_vez_modificado = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

@@ -79,6 +79,22 @@
   },
   {
     "ContainingType": "backend_salafinder.Controllers.EspacioController",
+    "Method": "Delete",
+    "RelativePath": "Espacio",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "espacio",
+        "Type": "backend_salafinder.Models.DTO.DeleteEspacioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.EspacioController",
     "Method": "Edit",
     "RelativePath": "Espacio",
     "HttpMethod": "PUT",
@@ -169,7 +185,7 @@
   {
     "ContainingType": "backend_salafinder.Controllers.ReservaController",
     "Method": "ChangeStatus",
-    "RelativePath": "Reserva/{id}, {status}",
+    "RelativePath": "Reserva/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -183,10 +199,21 @@
         "Name": "estado",
         "Type": "backend_salafinder.Models.DTO.CambiarEstadoDTO",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.ReservaController",
+    "Method": "Cancelar",
+    "RelativePath": "Reserva/cancel",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Name": "status",
-        "Type": "",
+        "Name": "reserva",
+        "Type": "backend_salafinder.Models.DTO.CancelarDTO",
         "IsRequired": true
       }
     ],
