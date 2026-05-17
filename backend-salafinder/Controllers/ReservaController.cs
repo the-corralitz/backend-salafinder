@@ -66,12 +66,12 @@ namespace backend_salafinder.Controllers {
                     reserva.proposito,
                     reserva.asistentes,
                     reserva.id_espacio,
-                    reserva.id_usuario
+                    usuarioId
                 );
 
                 return CreatedAtAction(nameof(GetById), new { id = created.id }, reserva);
             } catch (Exception ex) { 
-                return BadRequest(ex.Message); 
+                return BadRequest(new { message = ex.Message }); 
             }
         }
 
@@ -84,8 +84,8 @@ namespace backend_salafinder.Controllers {
             try {
                 var result = await _reserva_service.Cancelar(reserva.id, id_usuario);
                 if (!result)
-                    return NotFound("No se encontró la reserva");
-                return Ok("Se canceló la reserva exitosamente");
+                    return NotFound(new { message = "No se encontró la reserva" });
+                return Ok(new { message = "Se canceló la reserva exitosamente" });
             } catch (Exception e) {
                 return BadRequest(new { message = e.Message });
             }
@@ -100,7 +100,7 @@ namespace backend_salafinder.Controllers {
                     return NotFound(new { message = "Reserva no encontrada." });
                 return Ok(new { message = $"Estado cambiado a {estado.estado}" });
             } catch (Exception ex) {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
     }
