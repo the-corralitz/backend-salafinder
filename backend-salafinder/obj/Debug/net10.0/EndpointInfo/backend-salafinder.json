@@ -77,6 +77,38 @@
         }
       }
     },
+    "/Auth/cambiar-rol": {
+      "patch": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarRolDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarRolDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarRolDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Espacio": {
       "get": {
         "tags": [
@@ -369,6 +401,18 @@
         "type": "object",
         "properties": {
           "estado": {
+            "type": "string"
+          }
+        }
+      },
+      "CambiarRolDTO": {
+        "type": "object",
+        "properties": {
+          "usuario_perfil_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nuevo_rol": {
             "type": "string"
           }
         }
