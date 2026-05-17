@@ -3,6 +3,8 @@ using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
 using backend_salafinder.Persistence;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -21,31 +23,27 @@ namespace backend_salafinder.Services
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IConfiguration configuration,
-            ApplicationDbContext context)
-        {
+            ApplicationDbContext context) {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _context = context;
         }
 
-        public async Task<AuthResponseDTO> Register(RegisterDTO dto)
-        {
+        public async Task<AuthResponseDTO> Register(RegisterDTO dto) {
             // Verificar si el correo ya existe
             var existingUser = await _userManager.FindByEmailAsync(dto.email);
             if (existingUser != null)
                 throw new Exception("Ya existe una cuenta con ese correo.");
 
             // Crear usuario en Identity
-            var identityUser = new IdentityUser
-            {
+            var identityUser = new IdentityUser {
                 UserName = dto.email,
                 Email = dto.email,
             };
 
             var result = await _userManager.CreateAsync(identityUser, dto.password);
-            if (!result.Succeeded)
-            {
+            if (!result.Succeeded) {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
                 throw new Exception(errors);
             }
@@ -59,8 +57,7 @@ namespace backend_salafinder.Services
             await _userManager.AddToRoleAsync(identityUser, "Student");
 
             // Crear perfil del usuario
-            var perfil = new UsuarioPerfil
-            {
+            var perfil = new UsuarioPerfil {
                 identity_user_id = identityUser.Id,
                 nombre_completo = dto.nombre_completo,
                 no_shows = 0,
@@ -73,8 +70,7 @@ namespace backend_salafinder.Services
             return GenerarAuthResponse(identityUser, perfil, "Student");
         }
 
-        public async Task<AuthResponseDTO> Login(LoginDTO dto)
-        {
+        public async Task<AuthResponseDTO> Login(LoginDTO dto) {
             // Buscar usuario
             var identityUser = await _userManager.FindByEmailAsync(dto.email);
             if (identityUser == null)
@@ -102,13 +98,11 @@ namespace backend_salafinder.Services
         private AuthResponseDTO GenerarAuthResponse(
             IdentityUser identityUser,
             UsuarioPerfil perfil,
-            string rol)
-        {
+            string rol) {
             var expira = DateTime.UtcNow.AddHours(8);
             var token = GenerarJwtToken(identityUser, perfil, rol, expira);
 
-            return new AuthResponseDTO
-            {
+            return new AuthResponseDTO {
                 token = token,
                 email = identityUser.Email!,
                 nombre_completo = perfil.nombre_completo,
@@ -122,14 +116,12 @@ namespace backend_salafinder.Services
             IdentityUser identityUser,
             UsuarioPerfil perfil,
             string rol,
-            DateTime expira)
-        {
+            DateTime expira) {
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[]
-            {
+            var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub,   identityUser.Id),
                 new Claim(JwtRegisteredClaimNames.Email, identityUser.Email!),
                 new Claim(ClaimTypes.Role,               rol),
@@ -146,6 +138,30 @@ namespace backend_salafinder.Services
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<bool> CambiarRol(CambiarRolDTO dto) {
+            var roles_permitidos = new[] { "Student", "Staff" };
+            if (!roles_permitidos.Contains(dto.nuevo_rol))
+                throw new Exception("Sólo se asignar el rol 'Student' o Staff'.");
+
+            var perfil = await _context.UsuarioPerfil
+                .FirstOrDefaultAsync(u => u.id == dto.usuario_perfil_id);
+            if (perfil == null)
+                throw new Exception("Usuario no encontrado.");
+
+            var identity_user = await _userManager.FindByIdAsync(perfil.identity_user_id);
+            if (identity_user == null)
+                throw new Exception("Usuario de autenticación no encontrado.");
+
+            var roles_actuales = await _userManager.GetRolesAsync(identity_user);
+            if (roles_actuales.Contains(dto.nuevo_rol))
+                throw new Exception($"El usuario ya tiene el rol {dto.nuevo_rol}.");
+
+            await _userManager.RemoveFromRolesAsync(identity_user, roles_actuales);
+            await _userManager.AddToRoleAsync(identity_user, dto.nuevo_rol);
+
+            return true;
         }
     }
 }
