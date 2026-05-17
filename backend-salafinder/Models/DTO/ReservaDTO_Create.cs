@@ -8,6 +8,5 @@ namespace backend_salafinder.Models.DTO {
         public string proposito { get; set; }
         public int asistentes { get; set; }
         public Guid id_espacio { get; set; }
-        public Guid id_usuario { get; set; }
     }
 }

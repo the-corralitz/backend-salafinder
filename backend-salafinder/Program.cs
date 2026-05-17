@@ -15,6 +15,20 @@ var connection_string = builder.Configuration.GetConnectionString("DefaultConnec
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection_string));
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontendPolicy", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "https://diegocolbdz.github.io"
+              )
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
     options.Password.RequireDigit = true;
     options.Password.RequiredLength = 8;
@@ -62,6 +76,12 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapControllers();
+
+app.UseCors("FrontendPolicy");
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
