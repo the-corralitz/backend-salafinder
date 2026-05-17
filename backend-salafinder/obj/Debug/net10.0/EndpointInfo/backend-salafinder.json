@@ -77,38 +77,6 @@
         }
       }
     },
-    "/Auth/cambiar-rol": {
-      "patch": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CambiarRolDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CambiarRolDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CambiarRolDTO"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/Espacio": {
       "get": {
         "tags": [
@@ -393,6 +361,73 @@
           }
         }
       }
+    },
+    "/UsuarioPerfil": {
+      "get": {
+        "tags": [
+          "UsuarioPerfil"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/UsuarioPerfil/{id}": {
+      "get": {
+        "tags": [
+          "UsuarioPerfil"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/UsuarioPerfil/rol/cambiar": {
+      "patch": {
+        "tags": [
+          "UsuarioPerfil"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarRolDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarRolDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CambiarRolDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -551,10 +586,6 @@
           "id_espacio": {
             "type": "string",
             "format": "uuid"
-          },
-          "id_usuario": {
-            "type": "string",
-            "format": "uuid"
           }
         }
       }
@@ -572,6 +603,9 @@
     },
     {
       "name": "Test"
+    },
+    {
+      "name": "UsuarioPerfil"
     }
   ]
 }

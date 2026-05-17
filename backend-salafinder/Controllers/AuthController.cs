@@ -1,10 +1,7 @@
 ﻿using backend_salafinder.Interfaces;
 using backend_salafinder.Models.DTO;
-using backend_salafinder.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace backend_salafinder.Controllers {
     [ApiController]
@@ -27,7 +24,6 @@ namespace backend_salafinder.Controllers {
             }
         }
 
-        // POST /auth/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO dto) {
             try {
@@ -36,17 +32,6 @@ namespace backend_salafinder.Controllers {
             }
             catch (Exception ex) {
                 return BadRequest(new { message = ex.Message });
-            }
-        }
-
-        [HttpPatch("cambiar-rol")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CambiarRol([FromBody] CambiarRolDTO dto) {
-            try {
-                await _auth_service.CambiarRol(dto);
-                return Ok(new { message = $"Rol actualizado a {dto.nuevo_rol} correctamente." });
-            } catch (Exception e) {
-                return BadRequest(new { message = e.Message });
             }
         }
 

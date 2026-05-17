@@ -3,17 +3,13 @@ using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
 using backend_salafinder.Persistence;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace backend_salafinder.Services
-{
-    public class AuthService : IAuthService
-    {
+namespace backend_salafinder.Services {
+    public class AuthService : IAuthService {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
@@ -31,12 +27,10 @@ namespace backend_salafinder.Services
         }
 
         public async Task<AuthResponseDTO> Register(RegisterDTO dto) {
-            // Verificar si el correo ya existe
             var existingUser = await _userManager.FindByEmailAsync(dto.email);
             if (existingUser != null)
                 throw new Exception("Ya existe una cuenta con ese correo.");
 
-            // Crear usuario en Identity
             var identityUser = new IdentityUser {
                 UserName = dto.email,
                 Email = dto.email,
@@ -48,15 +42,12 @@ namespace backend_salafinder.Services
                 throw new Exception(errors);
             }
 
-            // Crear roles si no existen
             foreach (var rol in new[] { "Student", "Staff", "Admin" })
                 if (!await _roleManager.RoleExistsAsync(rol))
                     await _roleManager.CreateAsync(new IdentityRole(rol));
 
-            // Asignar rol Student por defecto
             await _userManager.AddToRoleAsync(identityUser, "Student");
 
-            // Crear perfil del usuario
             var perfil = new UsuarioPerfil {
                 identity_user_id = identityUser.Id,
                 nombre_completo = dto.nombre_completo,
@@ -71,23 +62,19 @@ namespace backend_salafinder.Services
         }
 
         public async Task<AuthResponseDTO> Login(LoginDTO dto) {
-            // Buscar usuario
             var identityUser = await _userManager.FindByEmailAsync(dto.email);
             if (identityUser == null)
                 throw new Exception("Correo o contraseña incorrectos.");
 
-            // Verificar contraseña
             var isValid = await _userManager.CheckPasswordAsync(identityUser, dto.password);
             if (!isValid)
                 throw new Exception("Correo o contraseña incorrectos.");
 
-            // Buscar perfil
             var perfil = _context.UsuarioPerfil
                 .FirstOrDefault(u => u.identity_user_id == identityUser.Id);
             if (perfil == null)
                 throw new Exception("Perfil de usuario no encontrado.");
 
-            // Obtener rol
             var roles = await _userManager.GetRolesAsync(identityUser);
             var rol = roles.FirstOrDefault() ?? "Student";
 
@@ -138,30 +125,6 @@ namespace backend_salafinder.Services
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        public async Task<bool> CambiarRol(CambiarRolDTO dto) {
-            var roles_permitidos = new[] { "Student", "Staff" };
-            if (!roles_permitidos.Contains(dto.nuevo_rol))
-                throw new Exception("Sólo se asignar el rol 'Student' o Staff'.");
-
-            var perfil = await _context.UsuarioPerfil
-                .FirstOrDefaultAsync(u => u.id == dto.usuario_perfil_id);
-            if (perfil == null)
-                throw new Exception("Usuario no encontrado.");
-
-            var identity_user = await _userManager.FindByIdAsync(perfil.identity_user_id);
-            if (identity_user == null)
-                throw new Exception("Usuario de autenticación no encontrado.");
-
-            var roles_actuales = await _userManager.GetRolesAsync(identity_user);
-            if (roles_actuales.Contains(dto.nuevo_rol))
-                throw new Exception($"El usuario ya tiene el rol {dto.nuevo_rol}.");
-
-            await _userManager.RemoveFromRolesAsync(identity_user, roles_actuales);
-            await _userManager.AddToRoleAsync(identity_user, dto.nuevo_rol);
-
-            return true;
         }
     }
 }
