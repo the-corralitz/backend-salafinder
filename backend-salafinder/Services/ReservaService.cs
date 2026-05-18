@@ -2,7 +2,6 @@
 using backend_salafinder.Models;
 using backend_salafinder.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging.Abstractions;
 
 namespace backend_salafinder.Services {
     public class ReservaService : IReservaService {
@@ -18,8 +17,7 @@ namespace backend_salafinder.Services {
                 .ToListAsync();
         }
 
-        public async Task<List<Reserva>> GetByUsuario(Guid id)
-        {
+        public async Task<List<Reserva>> GetByUsuario(Guid id) {
             return await _context.Reserva
                 .Include(r => r.espacio)
                 .Include(r => r.usuario)

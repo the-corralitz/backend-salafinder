@@ -1,5 +1,4 @@
 ﻿using backend_salafinder.Interfaces;
-using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

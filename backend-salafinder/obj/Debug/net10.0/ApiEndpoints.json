@@ -11,22 +11,6 @@
   },
   {
     "ContainingType": "backend_salafinder.Controllers.AuthController",
-    "Method": "CambiarRol",
-    "RelativePath": "Auth/cambiar-rol",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "backend_salafinder.Models.DTO.CambiarRolDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "backend_salafinder.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "Auth/login",
     "HttpMethod": "POST",
@@ -253,6 +237,48 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.UsuarioPerfilController",
+    "Method": "GetAllUsers",
+    "RelativePath": "UsuarioPerfil",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.UsuarioPerfilController",
+    "Method": "GetUserById",
+    "RelativePath": "UsuarioPerfil/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.UsuarioPerfilController",
+    "Method": "CambiarRol",
+    "RelativePath": "UsuarioPerfil/rol/cambiar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "backend_salafinder.Models.DTO.CambiarRolDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

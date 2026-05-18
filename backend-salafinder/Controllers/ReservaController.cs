@@ -1,8 +1,5 @@
-﻿using System.Linq.Expressions;
-using backend_salafinder.Interfaces;
-using backend_salafinder.Models;
+﻿using backend_salafinder.Interfaces;
 using backend_salafinder.Models.DTO;
-using backend_salafinder.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,16 +11,15 @@ namespace backend_salafinder.Controllers {
         public ReservaController(IReservaService reserva_service) {
             _reserva_service = reserva_service;
         }
+
         public IActionResult Index() {
             return View();
         }
 
-        private Guid GetUsuarioPerfilId()
-        {
+        private Guid GetUsuarioPerfilId() {
             var claim = User.FindFirst("usuario_perfil_id")?.Value;
             return Guid.TryParse(claim, out var id) ? id : Guid.Empty;
         }
-
 
         [HttpGet]
         public async Task<IActionResult> GetAll() {
@@ -31,6 +27,7 @@ namespace backend_salafinder.Controllers {
                 return Ok(await _reserva_service.GetAll());
 
             var usuario_id = GetUsuarioPerfilId();
+
             if (usuario_id == Guid.Empty)
                 return Unauthorized(new { message = "Token inválido." });
             return Ok(await _reserva_service.GetByUsuario(usuario_id));

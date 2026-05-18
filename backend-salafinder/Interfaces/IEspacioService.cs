@@ -1,6 +1,5 @@
 ﻿using backend_salafinder.Models;
 using backend_salafinder.Models.DTO;
-using Microsoft.Extensions.Primitives;
 
 namespace backend_salafinder.Interfaces {
     public interface IEspacioService {

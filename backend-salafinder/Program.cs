@@ -15,8 +15,7 @@ var connection_string = builder.Configuration.GetConnectionString("DefaultConnec
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection_string));
 builder.Services.AddControllers();
 
-builder.Services.AddCors(options =>
-{
+builder.Services.AddCors(options => {
     options.AddPolicy("FrontendPolicy", policy =>
     {
         policy.WithOrigins(
@@ -24,8 +23,8 @@ builder.Services.AddCors(options =>
                 "https://diegocolbdz.github.io"
               )
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
+              //.AllowCredentials();
     });
 });
 
@@ -37,15 +36,12 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
-builder.Services.AddAuthentication(options =>
-{
+builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
+.AddJwtBearer(options => {
+    options.TokenValidationParameters = new TokenValidationParameters {
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
@@ -57,12 +53,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IEspacioService, EspacioService>();
 builder.Services.AddScoped<IReservaService, ReservaService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUsuarioPerfilService, UsuarioPerfilService>();
 
 var app = builder.Build();
 
@@ -72,16 +68,20 @@ if (app.Environment.IsDevelopment()) {
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
-app.MapControllers();
+//app.MapControllers();
 
 app.UseCors("FrontendPolicy");
+
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
+
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
