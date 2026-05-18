@@ -43,7 +43,7 @@ namespace backend_salafinder.Controllers {
             );
 
             return created != null ? CreatedAtAction(nameof(GetById),
-                new { id = created.id }, espacio) : BadRequest(new { message = "IDs repetidos."});
+                new { id = created.id }, created) : BadRequest(new { message = "IDs repetidos."});
         }
 
         [HttpDelete]

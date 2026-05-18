@@ -9,8 +9,9 @@ namespace backend_salafinder.Services {
     public class UsuarioPerfilService : IUsuarioPerfilService {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        public UsuarioPerfilService(ApplicationDbContext context) {
+        public UsuarioPerfilService(ApplicationDbContext context, UserManager<IdentityUser> userManager) {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<List<UsuarioPerfil>> GetAllUsers() {
