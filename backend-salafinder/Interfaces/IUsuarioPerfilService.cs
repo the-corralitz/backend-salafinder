@@ -6,5 +6,6 @@ namespace backend_salafinder.Interfaces {
         Task<List<UsuarioPerfil>> GetAllUsers();
         Task<UsuarioPerfil?> GetUserById(Guid id);
         Task<bool> CambiarRol(CambiarRolDTO rolDTO);
+        Task<bool> RegistrarNoShow(RegistrarNoShowDTO id);
     }
 }

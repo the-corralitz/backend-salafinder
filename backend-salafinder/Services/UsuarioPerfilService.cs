@@ -26,8 +26,7 @@ namespace backend_salafinder.Services {
                 .FirstOrDefaultAsync(u => u.id == id);
         }
 
-        public async Task<bool> CambiarRol(CambiarRolDTO dto)
-        {
+        public async Task<bool> CambiarRol(CambiarRolDTO dto) {
             var roles_permitidos = new[] { "Student", "Staff" };
             if (!roles_permitidos.Contains(dto.nuevo_rol))
                 throw new Exception("Sólo se asignar el rol 'Student' o Staff'.");
@@ -47,6 +46,23 @@ namespace backend_salafinder.Services {
 
             await _userManager.RemoveFromRolesAsync(identity_user, roles_actuales);
             await _userManager.AddToRoleAsync(identity_user, dto.nuevo_rol);
+
+            return true;
+        }
+
+        public async Task<bool> RegistrarNoShow(RegistrarNoShowDTO dto) {
+            var usuario = await _context.UsuarioPerfil.FirstOrDefaultAsync(u => u.id == dto.id);
+            if (usuario == null)
+                throw new Exception("Usuario no encontrado");
+
+            usuario.no_shows++;
+
+            if (usuario.no_shows >= 2) {
+                usuario.bloqueado_hasta = DateTime.UtcNow.AddDays(7);
+                usuario.no_shows = 0;
+            }
+
+            await _context.SaveChangesAsync();
 
             return true;
         }

@@ -428,6 +428,38 @@
           }
         }
       }
+    },
+    "/UsuarioPerfil/registrar_no_show": {
+      "patch": {
+        "tags": [
+          "UsuarioPerfil"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarNoShowDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarNoShowDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarNoShowDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -554,6 +586,15 @@
           },
           "password": {
             "type": "string"
+          }
+        }
+      },
+      "RegistrarNoShowDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
           }
         }
       },

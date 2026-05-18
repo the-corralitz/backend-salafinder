@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend_salafinder.Controllers {
     [ApiController]
     [Route("[controller]")]
-    [Authorize(Roles = "Admin")]
     public class UsuarioPerfilController : ControllerBase {
         private readonly IUsuarioPerfilService _service;
         private readonly UserManager<IdentityUser> _userManager;
@@ -20,6 +19,7 @@ namespace backend_salafinder.Controllers {
             _userManager = userManager;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetAllUsers() {
             var perfiles = await _service.GetAllUsers();
@@ -44,6 +44,7 @@ namespace backend_salafinder.Controllers {
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(Guid id) {
             var perfil = await _service.GetUserById(id);
@@ -65,17 +66,25 @@ namespace backend_salafinder.Controllers {
             });
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPatch("rol/cambiar")]
-        public async Task<IActionResult> CambiarRol([FromBody] CambiarRolDTO dto)
-        {
-            try
-            {
+        public async Task<IActionResult> CambiarRol([FromBody] CambiarRolDTO dto) {
+            try {
                 await _service.CambiarRol(dto);
                 return Ok(new { message = $"Rol actualizado a {dto.nuevo_rol} correctamente." });
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 return BadRequest(new { message = e.Message });
+            }
+        }
+
+        [Authorize(Roles = "Staff")]
+        [HttpPatch("registrar_no_show")]
+        public async Task<IActionResult> RegistrarNoShow([FromBody] RegistrarNoShowDTO dto) {
+            try {
+                await _service.RegistrarNoShow(dto);
+                return Ok(new { message = $"No shows aumentados exitosamente" });
+            } catch(Exception e) {
+                return NotFound(new { message = e.Message });
             }
         }
     }
