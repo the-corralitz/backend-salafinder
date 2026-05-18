@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("backend-salafinder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9693c4b6d1850a4fb79009f698a594a0e6341b01")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a78c1dffaafbb7f196f5649f01fb7c731e5abdb4")]
 [assembly: System.Reflection.AssemblyProductAttribute("backend-salafinder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("backend-salafinder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

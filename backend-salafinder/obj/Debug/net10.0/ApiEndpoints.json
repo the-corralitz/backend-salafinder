@@ -267,6 +267,22 @@
   },
   {
     "ContainingType": "backend_salafinder.Controllers.UsuarioPerfilController",
+    "Method": "RegistrarNoShow",
+    "RelativePath": "UsuarioPerfil/registrar_no_show",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "backend_salafinder.Models.DTO.RegistrarNoShowDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.UsuarioPerfilController",
     "Method": "CambiarRol",
     "RelativePath": "UsuarioPerfil/rol/cambiar",
     "HttpMethod": "PATCH",
