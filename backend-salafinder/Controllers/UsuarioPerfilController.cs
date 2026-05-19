@@ -44,6 +44,34 @@ namespace backend_salafinder.Controllers {
             return Ok(result);
         }
 
+        [Authorize(Roles = "Staff")]
+        [HttpGet("students")]
+        public async Task<IActionResult> GetOnlyStudents()
+        {
+            var perfiles = await _service.GetOnlyStudents();
+            var result = new List<UsuarioPerfilDTO>();
+
+            foreach (var perfil in perfiles)
+            {
+                var roles = await _userManager.GetRolesAsync(perfil.identity_user!);
+                var rol = roles.FirstOrDefault() ?? "Student";
+
+                result.Add(new UsuarioPerfilDTO
+                {
+                    id = perfil.id,
+                    nombre_completo = perfil.nombre_completo,
+                    email = perfil.identity_user?.Email ?? string.Empty,
+                    rol = rol,
+                    no_shows = perfil.no_shows,
+                    bloqueado_hasta = perfil.bloqueado_hasta,
+                    esta_bloqueado = perfil.bloqueado_hasta.HasValue &&
+                                      DateTime.UtcNow < perfil.bloqueado_hasta.Value,
+                });
+            }
+
+            return Ok(result);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(Guid id) {

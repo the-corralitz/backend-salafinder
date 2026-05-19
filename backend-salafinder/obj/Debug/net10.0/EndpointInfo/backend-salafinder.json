@@ -374,6 +374,18 @@
         }
       }
     },
+    "/UsuarioPerfil/students": {
+      "get": {
+        "tags": [
+          "UsuarioPerfil"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/UsuarioPerfil/{id}": {
       "get": {
         "tags": [
