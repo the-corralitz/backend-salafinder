@@ -296,5 +296,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_salafinder.Controllers.UsuarioPerfilController",
+    "Method": "GetOnlyStudents",
+    "RelativePath": "UsuarioPerfil/students",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

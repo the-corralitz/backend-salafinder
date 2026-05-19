@@ -20,6 +20,23 @@ namespace backend_salafinder.Services {
                 .ToListAsync();
         }
 
+        public async Task<List<UsuarioPerfil>> GetOnlyStudents()
+        {
+            var students = new List<UsuarioPerfil>();
+            var perfiles = await _context.UsuarioPerfil
+                .Include(u => u.identity_user)
+                .ToListAsync();
+
+            foreach (var perfil in perfiles)
+            {
+                var roles = await _userManager.GetRolesAsync(perfil.identity_user!);
+                if (roles.Contains("Student"))
+                    students.Add(perfil);
+            }
+
+            return students;
+        }
+
         public async Task<UsuarioPerfil> GetUserById(Guid id) {
             return await _context.UsuarioPerfil
                 .Include(u => u.identity_user)
