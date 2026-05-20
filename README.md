@@ -33,7 +33,21 @@ https://localhost:{puerto}/scalar/v1
 | Staff | Registra no-shows de estudiantes |
 | Admin | Acceso completo al sistema |
 
-> El rol **Student** se asigna automáticamente al registrarse.
-> El rol **Staff** lo asigna el Admin desde el endpoint `/usuarioperfil/rol/cambiar`.
+- El rol **Student** se asigna automáticamente al registrarse.
+- El rol **Staff** lo asigna el Admin desde el endpoint `/usuarioperfil/rol/cambiar`.
+- El rol **Admin** se asigna manualmente desde SSMS (ver sección abajo).
 
 ---
+
+## Crear usuario Admin en SSMS
+
+```sql
+DECLARE @UserId NVARCHAR(450)
+DECLARE @AdminRoleId NVARCHAR(450)
+
+SELECT @UserId = Id FROM AspNetUsers WHERE Email = 'admin@uni.edu'
+SELECT @AdminRoleId = Id FROM AspNetRoles WHERE Name = 'Admin'
+
+DELETE FROM AspNetUserRoles WHERE UserId = @UserId
+INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES (@UserId, @AdminRoleId)
+```
